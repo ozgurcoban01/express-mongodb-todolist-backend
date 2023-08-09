@@ -17,7 +17,7 @@ app.use(function (req, res, next) {
     next();
     });
 app.use(express.json())
-app.use(cors(corsOptions));
+app.use(cors());
 async function connect(){
     try{
         await mongoose.connect(MONGO_CONNECT_URL)
