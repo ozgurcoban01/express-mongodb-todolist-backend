@@ -3,7 +3,7 @@ const express=require("express")
 const cors = require("cors");
 const dotenv=require("dotenv").config()
 const corsOptions = {
-    origin: "https://todolist-backend-odq2.onrender.com",
+    origin: "http://127.0.0.1:5500/",
   };
 const MONGO_CONNECT_URL=process.env.MONGO_CONNECT_URL
 const PORT=process.env.PORT
