@@ -25,5 +25,5 @@ app.use("/api/todos",require("./routes/todoListRoute"))
 
 
 app.listen(PORT,()=>{
-    console.log("server running")
+    console.log("server running port "+PORT)
 })
