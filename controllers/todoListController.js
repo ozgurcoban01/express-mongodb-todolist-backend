@@ -29,7 +29,7 @@ const changeTodo=async (req,res)=>{
 }
 
 const deleteTodo=async (req,res)=>{
-    const todo=await todoSchema.deleteONe({_id:req.params.id});
+    const todo=await todoSchema.findByIdAndDelete({_id:req.params.id});
 
     res.json(todo)
 }
