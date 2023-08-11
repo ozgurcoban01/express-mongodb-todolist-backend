@@ -1,6 +1,7 @@
 const dotenv=require("dotenv").config()
 const PORT=process.env.PORT
 const MONGO_CONNECT_URL=process.env.MONGO_CONNECT_URL
+
 const cors = require("cors");
  
 const mongoose=require("mongoose")
@@ -9,9 +10,6 @@ const app=express()
 
 
 const https = require('https').Server(app);
-
-
-
 
 app.use(express.json())
 
@@ -30,7 +28,7 @@ const io = require('socket.io')(https,{
     cors:{origin:"*"}
   });
 
-
+app.listen(PORT,()=>{console.log("listining app")})
 https.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
 
