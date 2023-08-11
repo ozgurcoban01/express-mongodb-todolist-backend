@@ -1,10 +1,12 @@
 const dotenv=require("dotenv").config()
 const PORT=process.env.PORT
 const MONGO_CONNECT_URL=process.env.MONGO_CONNECT_URL
-
+const cors = require("cors");
+ 
 const mongoose=require("mongoose")
 const express=require("express")
 const app=express()
+app.use(cors());
 const https = require('https').Server(app);
 
 const io = require('socket.io')(https,{
@@ -13,9 +15,6 @@ const io = require('socket.io')(https,{
 
 
 https.listen(PORT, () => console.log(`Listening on port ${PORT}`));
-
-const cors = require("cors");
- 
 
 
 app.use(function (req, res, next) {
@@ -27,7 +26,7 @@ app.use(function (req, res, next) {
     });
 
 app.use(express.json())
-app.use(cors());
+
 
 async function connect(){
     try{
