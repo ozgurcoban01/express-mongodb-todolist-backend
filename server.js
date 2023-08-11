@@ -29,7 +29,7 @@ const io = require('socket.io')(https,{
   });
 
 app.listen(PORT,()=>{console.log("listining app")})
-https.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+
 
 
 app.use("/api/todos",require("./routes/todoListRoute"))
