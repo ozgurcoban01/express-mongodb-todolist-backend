@@ -1,6 +1,4 @@
 const mongoose=require("mongoose")
-const http=require("http")
-const socketio=require("socket.io")
 const express=require("express")
 const cors = require("cors");
 const dotenv=require("dotenv").config()
@@ -25,16 +23,8 @@ async function connect(){
 }
 connect()
 
-io.on('connect',(socket)=>{
-    socket.on('message',(message)=>{
-        io.emit('message',message)
-    })
-})
-
-
-
 
 app.use("/api/todos",require("./routes/todoListRoute"))
 
-server.listen(PORT,()=>{console.log(`server running ${PORT}`)})
+app.listen(PORT,()=>{console.log(`server running ${PORT}`)})
 
