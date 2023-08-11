@@ -29,8 +29,8 @@ const changeTodo=async (req,res)=>{
 }
 
 const deleteTodo=async (req,res)=>{
-    const todo=await todoSchema.findById(req.params.id);
-    await todoSchema.remove
+    const todo=await todoSchema.findByIdAndDelete({_id:req.params.id});
+
     res.json(todo)
 }
 
