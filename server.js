@@ -5,14 +5,14 @@ const MONGO_CONNECT_URL=process.env.MONGO_CONNECT_URL
 const mongoose=require("mongoose")
 const express=require("express")
 const app=express()
-const http = require('http').Server(app);
+const https = require('https').Server(app);
 
-const io = require('socket.io')(http,{
+const io = require('socket.io')(https,{
     cors:{origin:"*"}
   });
 
 
-http.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+https.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
 const cors = require("cors");
  
