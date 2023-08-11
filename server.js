@@ -7,23 +7,18 @@ const mongoose=require("mongoose")
 const express=require("express")
 const app=express()
 app.use(cors());
-const https = require('https').Server(app);
-
-const io = require('socket.io')(https,{
-    cors:{origin:"*"}
-  });
-
-
-https.listen(PORT, () => console.log(`Listening on port ${PORT}`));
-
-
 app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8888');
+    res.setHeader('Access-Control-Allow-Origin', 'https://todolist-backend-odq2.onrender.com');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
     res.setHeader('Access-Control-Allow-Credentials', true);
     next();
     });
+
+const https = require('https').Server(app);
+
+
+
 
 app.use(express.json())
 
@@ -37,6 +32,13 @@ async function connect(){
     }
 }
 connect()
+
+const io = require('socket.io')(https,{
+    cors:{origin:"*"}
+  });
+
+
+https.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
 
 app.use("/api/todos",require("./routes/todoListRoute"))
