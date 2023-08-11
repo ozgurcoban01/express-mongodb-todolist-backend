@@ -23,7 +23,6 @@ app.use(function (req, res, next) {
 });
 
 app.use(express.json())
-app.use(cors());
 
 async function connect(){
     try{
@@ -42,9 +41,9 @@ io.on('connect',(socket)=>{
 })
 
 
+app.use(cors());
 
 app.use("/api/todos",require("./routes/todoListRoute"))
 
 server.listen(PORT,()=>{console.log(`server running ${PORT}`)})
 
-app.use(cors())
