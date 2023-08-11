@@ -37,7 +37,7 @@ connect()
 
 io.on('connect',(socket)=>{
     socket.on('message',(message)=>{
-        io.emit('message',"asfasda")
+        io.emit('message',message)
     })
 })
 
@@ -45,5 +45,7 @@ io.on('connect',(socket)=>{
 
 app.use("/api/todos",require("./routes/todoListRoute"))
 
-server.listen(PORT,()=>{console.log(`server running ${PORT}`)})
 
+app.listen(PORT,()=>{
+    console.log("server running port "+PORT)
+})
