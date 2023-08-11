@@ -7,8 +7,6 @@ const MONGO_CONNECT_URL=process.env.MONGO_CONNECT_URL
 const PORT=process.env.PORT
 
 const app=express()
-const server=http.createServer(app)
-const io=socketio(server)
 
 app.use(cors());
 app.use(express.json())
