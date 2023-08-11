@@ -7,6 +7,15 @@ const cors = require("cors");
 const mongoose=require("mongoose")
 const express=require("express")
 const app=express()
+app.use(cors());
+
+app.use(function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', 'https://todolist-backend-odq2.onrender.com');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+});
 
 
 const https = require('https').Server(app);
@@ -30,10 +39,7 @@ const io = require('socket.io')(https,{
 
 app.listen(PORT,()=>{console.log("listining app")})
 
-
-
 app.use("/api/todos",require("./routes/todoListRoute"))
-
 
 io.on('connection',(socket)=>{
     console.log('a user connected '+ socket.id)
@@ -46,12 +52,4 @@ io.on('connection',(socket)=>{
 })
 
 
-app.use(cors());
-app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', 'https://todolist-backend-odq2.onrender.com');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    next();
-    });
 
